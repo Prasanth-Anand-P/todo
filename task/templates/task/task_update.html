@@ -10,6 +10,8 @@
     <h1>Task Update</h1>
 
     <form>
+        {% csrf_token %}
+        {{form}}
         <input type="submit" name="Update Task">
     </form>
 
