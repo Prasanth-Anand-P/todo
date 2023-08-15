@@ -18,4 +18,11 @@ def index(request):
 
 def taskUpdate(request, pk):
     task = Task.objects.get(id = pk)
-    return render(request, 'task/task_update.html')
+    form = TaskForm(instance = task)
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance = task)
+        if form.is_valid:
+            form.save()
+        return redirect('index')
+    context = {'form':form}
+    return render(request, 'task/task_update.html', context)
