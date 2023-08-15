@@ -10,7 +10,7 @@ def index(request):
         form = TaskForm(request.POST)
         if form.is_valid:
             form.save()
-        return redirect('index')
+        return redirect('/')
 
     context = {'tasks': tasks, 'form' : form}
     return render(request, 'task/index.html', context)
@@ -19,10 +19,10 @@ def index(request):
 def taskUpdate(request, pk):
     task = Task.objects.get(id = pk)
     form = TaskForm(instance = task)
-    if request.method == "POST":
+    if request.method == 'POST':
         form = TaskForm(request.POST, instance = task)
         if form.is_valid:
             form.save()
-        return redirect('index')
+            return redirect('/')
     context = {'form':form}
     return render(request, 'task/task_update.html', context)
