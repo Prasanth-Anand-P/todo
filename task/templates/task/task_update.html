@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Update</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'task/style.css' %}">
 </head>
 <body>
     
+    <div class="box">
+    <div class="box-inside">
     <h1>Task Update</h1>
 
     <form method="POST">
         {% csrf_token %}
-        {{form}}
-        <input type="submit" name="Update Task">
+        {{form.as_p}}
+       <div class="up-btn"><input type="submit" name="Update Task"></div>
     </form>
+    </div>
+    </div>
 
 </body>
 </html>

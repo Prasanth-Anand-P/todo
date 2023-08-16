@@ -86,6 +86,64 @@ h3{
     
 }
 
+.box{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 100%;
+}
+
+.box p{
+    font-size: 20px;
+}
+
+.box a{
+    text-decoration: none;
+    color: white;
+    padding: 14px 20px 10px 20px;
+    border-radius: 18px ;
+    background-color: blue;
+    width: 60px;
+    /* text-align: center; */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.box input[type=submit]{
+    width: 100px;
+    margin-left: 40px;
+    border-radius: 18px;
+    background-color: orangered;
+}
+
+.box .box-inside{
+    display: flex;
+    flex-direction: column;
+    background-color: #61677A;
+    height: auto;
+    /* color: white */
+    /* width: 400px; */
+    align-items: center;
+    padding: 13px;
+}
+
+.box-inside label{
+    font-size: 20px;
+}
+
+.clickable{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.up-btn{
+    margin-left: 50px;
+    /* position: absolute; */
+}
+
 @media(max-width:768px){
     .main-box{
         width: 450px;

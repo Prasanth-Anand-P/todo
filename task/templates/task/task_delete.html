@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Task</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'task/style.css' %}">
 </head>
 <body>
     
-    <p>Sure you want Delete Task: "{{item}}"</p>
+    <div class="box">
+        <div class="box-inside">
+        <p>Sure you want Delete Task: "{{item}}"</p>
+        
+        <div class="clickable">
+        <a href="{% url 'index' %}">Cancel</a>
 
-    <a href="{% url 'index' %}">Cancel</a>
-
-    <form method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Delete">
-    </form>
-
+        <form method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+        </div>
+        </div>
+    </div>
 
 </body>
 </html>
