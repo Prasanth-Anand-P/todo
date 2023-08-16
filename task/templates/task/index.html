@@ -3,31 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'task/style.css' %}">
     <title>todo</title>
 </head>
+
+<!-- <style>
+    body{
+    margin: 0;
+    padding: 0;
+    background-color: yellow;
+}
+</style> -->
+
 <body>
-    <h1>Hello World</h1>
-    <br>
+    
+    <div class="main-box">
+        <h1 class="heading">To Do</h1>
+        <br>
 
-    <form method="POST" action="/">
-        {% csrf_token %}
-        {{ form.title }}
-        <input type="submit" name = "Add Task">
-    </form>
+        <form method="POST" action="/">
+            {% csrf_token %}
+            {{ form.title }}
+            <input type="submit" value = "Add Task">
+        </form>
 
-    <br>
-    {% for task in tasks %}
+        <br>
+        {% for task in tasks %}
+        <div class="list-box">
+            <div class="btns">
+            <a href="{% url 'task_update' task.id %}"><p class="clicks up">Update</p></a>
+            <a href="{% url 'task_delete' task.id %}"><p class="clicks del">Delete</p></a>
+            
+            
+            {% if task.status == True %}
+            <h3><strike>{{task}}</strike></h3>
+            {% else %}
+            <h3><span>{{task}}</span></h3>
+            {% endif %}
+            <br>
+        </div>
+        </div>
+        {% endfor %}
+        
 
-    <a href="{% url 'task_update' task.id %}">Update</a>
-    <a href="{% url 'task_delete' task.id %}">Delete</a>
-
-    {% if task.status == True %}
-    <strike>{{task}}</strike>
-    {% else %}
-    <span>{{task}}</span>
-    {% endif %}
-    <br>
-
-    {% endfor %}
+    </div>
 </body>
 </html>
